@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Electric Dreams</title>
+  <style media="screen">
+    /* *{border:1px solid red;} */
+    body {
+      background-image: url("robot.jpg");
+
+      font-family: monospace;
+
+      background-color: #333;
+      color: #ffffff;
+      font-size: 18px;
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      margin-left: 3em;
+    }
+
+    #computer {
+      background-color: #917912;
+      border: 1px ;
+      width: 80ch;
+      padding: 1em;
+    }
+
+    #human {
+      background-color: black;
+      border: 1px solid green;
+      width: 80ch;
+      padding: 1em;
+      font-size: inherit;
+      font-family: inherit;
+      color: white;
+    }
+
+    button {
+      width: 10ch;
+      margin: 1em 0 0 2em;
+      color: #dbb71f;
+      font-size: inherit;
+      font-family: inherit;
+      border-radius: 14px;
+    }
+
+    .displayNone{display:none;}
+
+  </style>
+</head>
+
+<body>
+  <h1>Electric Dreams</h1>
+  <p id="computer">Hello, how are you doing today?</p>
+  <input type="text" placeholder="Type your response" id="human">
+  <button type="button" name="button" id="button">Enter</button>
+
+  <script type="text/javascript">
+    //fun
+    //grab all the elements we need to control
+    let computer = document.querySelector('#computer')
+    let human = document.querySelector('#human')
+    let button = document.querySelector('#button')
+    human.focus()
+
+    //other vars we will need
+    let computerMsg = ""
+    let humanMsg = ""
+
+    let genericResponses = ['I do not want to talk about that', 'Ha Ha, You are so funny :D', 'Trust me, I know! ', 'Do you think I am pretty?']
+
+    // console.log(genericResponses [2]);
+    let newResponse
+    let responseNumber
+    let questionTrack = "mood"
+
+
+    //set up the event listeners
+    button.addEventListener('click', clickHandler, false)
+    window.addEventListener('click', keydownHandler, false)
+
+    //set up handler functions
+    function clickHandler() {
+      playGame()
+    }
+
+    function keydownHandler(evt) {
+      if (evt.keyCode === 13) {
+        playGame()
+      }
+    }
+
+    //time for the game logic
+    function playGame() {
+      humanMsg = (human.value).toLowerCase()
+    // analyze the human response
+// if (questionTrack == "mood"){
+//
+// }else if (questionTrack== 'car'){
+//
+// }else if (questionTrack== 'friend'){
+//
+// }
+
+  switch (questionTrack){
+    case 'mood':
+    // computerMsg = 'Great to hear! Do you like cars?'
+    moodAnalysis()
+    break
+    case 'car':
+    carAnalysis()
+    break
+    case 'favCar':
+    favCarAnalysis()
+    break
+    case 'coffee':
+    coffeeAnalysis()
+    break
+    case 'iceCream':
+    iceCreamAnalysis()
+    break
+    case 'friend':
+    friendAnalysis()
+    break
+    default:
+    genericResponse()
+    break
+  }
+
+
+      computer.textContent = computerMsg
+      humanMsg = ""
+      human.value = humanMsg
+    }//end playGame
+
+    function moodAnalysis(){
+      if (humanMsg.indexOf("good")!= -1){
+        computerMsg = "Great to hear! I feel good today, too! Do you like cars?"
+        questionTrack = "car"
+      }else if (humanMsg.indexOf('bad') != -1){
+        computerMsg = "Do you want a vanilla ice-cream? It will make you feel better!"
+        questionTrack = 'iceCream'
+      }else{
+        genericResponse()
+      }
+    }//end moodAnalysis
+
+
+    function iceCreamAnalysis(){
+      if (humanMsg.indexOf("yes")!= -1){
+        computerMsg = "Go get one!"
+        // questionTrack = "car"
+      }else if (humanMsg.indexOf('no') != -1){
+        computerMsg = "Why not? I love ice-cream!"
+        // questionTrack = 'iceCream'
+      }else{
+        genericResponse()
+      }
+    }//end iceCreamAnalysis
+
+
+    function carAnalysis(){
+      if (humanMsg.indexOf("yes")!= -1){
+        computerMsg = "I like them too! What is your favorite car?"
+        questionTrack = "favCar"
+      }else if (humanMsg.indexOf('no') != -1){
+        computerMsg = "That's sad, I love driving."
+        // questionTrack = 'ice-cream'
+      }else{
+        genericResponse()
+      }
+    }//end carAnalysis
+
+
+    function favCarAnalysis(){
+      if (humanMsg.indexOf("bmw")!= -1){
+        computerMsg = "I love it! Do you want to get me coffee?"
+        questionTrack = "coffee"
+      }else if (humanMsg.indexOf('Audi') != -1){
+        computerMsg = "By the way my birthday is next month. JUST SAYING!"
+        // questionTrack = 'ice-cream'
+      }else{
+        genericResponse()
+      }
+    }//end favCarAnalysis
+
+
+    function coffeeAnalysis(){
+      if (humanMsg.indexOf("yes")!= -1){
+        computerMsg = "You are my best friend now! Can I come over?"
+        questionTrack = "friend"
+      }else if (humanMsg.indexOf('no') != -1){
+        computerMsg = "You are not my friend!"
+        // questionTrack = 'ice-cream'
+      }else{
+        genericResponse()
+      }
+    }//end coffeeAnalysis
+
+    function friendAnalysis(){
+      if (humanMsg.indexOf("yes")!= -1){
+        computerMsg = "Great, we can have a party! I will invite my friends."
+        // questionTrack = "friend"
+      }else if (humanMsg.indexOf('no') != -1){
+        computerMsg = "We are not friends anymore!"
+        // questionTrack = 'ice-cream'
+      }else{
+        genericResponse()
+      }
+    }//end coffeeAnalysis
+
+
+
+    function genericResponse (){
+      if (genericResponses.length > 0) {
+        newResponse = Math.floor(Math.random() * genericResponses.length)
+        // console.log(newResponse)
+        // computerMsg = "Go away."
+
+        computerMsg = genericResponses[newResponse]
+        // humanMsg = ""
+
+        genericResponses.splice(newResponse, 1)
+        // console.log(genericResponses)
+
+
+        // computer.textContent = computerMsg
+        // human.value = humanMsg
+
+      } else {
+        computerMsg = "I am tired! You should go!"
+        button.className = 'displayNone'
+        human.className = 'displayNone'
+        setTimeout(killGame, 2000)
+      }
+    }//end genericResponse
+
+
+    function killGame (){
+      location.assign("https://hennepintech.learn.minnstate.edu/")
+    }//end killGame
+
+
+  </script>
+</body>
+
+</html>
