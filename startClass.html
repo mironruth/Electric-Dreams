@@ -127,6 +127,8 @@
     case 'friend':
     friendAnalysis()
     break
+    case 'birthday':
+    birthdayAnalysis()
     default:
     genericResponse()
     break
@@ -178,11 +180,26 @@
 
 
     function favCarAnalysis(){
-      if (humanMsg.indexOf("bmw, ferrari, mercedes, chevrolet, jeep, buick, kia, mazda, fiat  ")!= -1){
+      if (humanMsg.indexOf("acura") || (humanMsg.indexOf("ferrari") ||
+      (humanMsg.indexOf("toyota") || (humanMsg.indexOf("chevrolet") ||
+      (humanMsg.indexOf("ford") || (humanMsg.indexOf("nissan") ||
+      (humanMsg.indexOf("volkswagen") || (humanMsg.indexOf("honda") ||
+      (humanMsg.indexOf("mercedes") || (humanMsg.indexOf("subaru") ||
+      (humanMsg.indexOf("hyunday") || (humanMsg.indexOf("kia") ||
+      (humanMsg.indexOf("buick") || (humanMsg.indexOf("dodge") ||
+      (humanMsg.indexOf("mitsubishi")!= -1){
         computerMsg = "I love it! Do you want to get me coffee?"
         questionTrack = "coffee"
-      }else if (humanMsg.indexOf('audi, tesla, hyunday, honda, ford, lamborghini, toyota, cadillac, lexus, land rover, jaguar,  ') != -1){
-        computerMsg = "By the way my birthday is next month. JUST SAYING!"
+      }else if (humanMsg.indexOf('audi')
+      (humanMsg.indexOf("tesla") || (humanMsg.indexOf("lamborghini") ||
+      (humanMsg.indexOf("cadillac") || (humanMsg.indexOf("lexus") ||
+      (humanMsg.indexOf("land rover") || (humanMsg.indexOf("jaguar") ||
+      (humanMsg.indexOf("mazda") || (humanMsg.indexOf("lincoln") ||
+      (humanMsg.indexOf("bentley") || (humanMsg.indexOf("rolls royce") ||
+      (humanMsg.indexOf("porsche") || (humanMsg.indexOf("bugatti") ||
+      (humanMsg.indexOf("maserati") || (humanMsg.indexOf("koenigsegg")||
+      (humanMsg.indexOf("McLaren") || (humanMsg.indexOf("pagani")!= -1){
+        computerMsg = "You are fancy! By the way my birthday is next month. JUST SAYING!"
         // questionTrack = 'ice-cream'
       }else{
         genericResponse()
@@ -196,11 +213,22 @@
         questionTrack = "friend"
       }else if (humanMsg.indexOf('no') != -1){
         computerMsg = "You are not my friend!"
-        // questionTrack = 'ice-cream'
+        questionTrack = 'birthday'
       }else{
         genericResponse()
       }
     }//end coffeeAnalysis
+    function birthdayAnalysis(){
+      if (humanMsg.indexOf("ok") || (humanMsg.indexOf("congratulations")!= -1){
+        computerMsg = "And that's it? What about a birthday gift?"
+        // questionTrack = "friend"
+      }else if (humanMsg.indexOf('good for you')!= -1){
+        computerMsg = "You should be more polite and congratulate me."
+        // questionTrack = 'birthday'
+      }else{
+        genericResponse()
+      }
+    }//end birthdayAnalysis
 
     function friendAnalysis(){
       if (humanMsg.indexOf("yes")!= -1){
