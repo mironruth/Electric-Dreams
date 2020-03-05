@@ -8,6 +8,10 @@
     /* *{border:1px solid red;} */
     body {
       background-image: url("robot.jpg");
+      background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center top;
+      background-size: cover ;
 
       font-family: monospace;
 
@@ -26,14 +30,14 @@
     #computer {
       background-color: #917912;
       border: 1px ;
-      width: 80ch;
+      width: 50%;
       padding: 1em;
     }
 
     #human {
       background-color: black;
       border: 1px solid green;
-      width: 80ch;
+      width: 50%;
       padding: 1em;
       font-size: inherit;
       font-family: inherit;
@@ -41,7 +45,8 @@
     }
 
     button {
-      width: 10ch;
+      width: 150px;
+      height: 35px;
       margin: 1em 0 0 2em;
       color: #dbb71f;
       font-size: inherit;
@@ -58,7 +63,7 @@
   <h1>Electric Dreams</h1>
   <p id="computer">Hello, how are you doing today?</p>
   <input type="text" placeholder="Type your response" id="human">
-  <button type="button" name="button" id="button">Enter</button>
+  <button type="button" name="button" id="button">ENTER</button>
 
   <script type="text/javascript">
     //fun
@@ -180,25 +185,25 @@
 
 
     function favCarAnalysis(){
-      if (humanMsg.indexOf("acura") || (humanMsg.indexOf("ferrari") ||
-      (humanMsg.indexOf("toyota") || (humanMsg.indexOf("chevrolet") ||
-      (humanMsg.indexOf("ford") || (humanMsg.indexOf("nissan") ||
-      (humanMsg.indexOf("volkswagen") || (humanMsg.indexOf("honda") ||
-      (humanMsg.indexOf("mercedes") || (humanMsg.indexOf("subaru") ||
-      (humanMsg.indexOf("hyunday") || (humanMsg.indexOf("kia") ||
-      (humanMsg.indexOf("buick") || (humanMsg.indexOf("dodge") ||
-      (humanMsg.indexOf("mitsubishi")!= -1){
+      if (humanMsg.indexOf("acura")!= -1 || humanMsg.indexOf("ferrari") != -1||
+      humanMsg.indexOf("toyota")!= -1  || humanMsg.indexOf("chevrolet")!= -1  ||
+      humanMsg.indexOf("ford")!= -1  || humanMsg.indexOf("nissan")!= -1  ||
+      humanMsg.indexOf("volkswagen")!= -1  || humanMsg.indexOf("honda")!= -1  ||
+      humanMsg.indexOf("mercedes")!= -1  || humanMsg.indexOf("subaru")!= -1  ||
+      humanMsg.indexOf("hyunday")!= -1  || humanMsg.indexOf("kia")!= -1  ||
+      humanMsg.indexOf("buick")!= -1  || humanMsg.indexOf("dodge")!= -1  ||
+      humanMsg.indexOf("mitsubishi")!= -1){
         computerMsg = "I love it! Do you want to get me coffee?"
         questionTrack = "coffee"
-      }else if (humanMsg.indexOf('audi')
-      (humanMsg.indexOf("tesla") || (humanMsg.indexOf("lamborghini") ||
-      (humanMsg.indexOf("cadillac") || (humanMsg.indexOf("lexus") ||
-      (humanMsg.indexOf("land rover") || (humanMsg.indexOf("jaguar") ||
-      (humanMsg.indexOf("mazda") || (humanMsg.indexOf("lincoln") ||
-      (humanMsg.indexOf("bentley") || (humanMsg.indexOf("rolls royce") ||
-      (humanMsg.indexOf("porsche") || (humanMsg.indexOf("bugatti") ||
-      (humanMsg.indexOf("maserati") || (humanMsg.indexOf("koenigsegg")||
-      (humanMsg.indexOf("McLaren") || (humanMsg.indexOf("pagani")!= -1){
+      }else if (humanMsg.indexOf('audi')!= -1 || humanMsg.indexOf("tesla")!= -1 ||
+      humanMsg.indexOf("lamborghini")!= -1  || humanMsg.indexOf("cadillac")!= -1 ||
+      humanMsg.indexOf("lexus")!= -1  || humanMsg.indexOf("land rover")!= -1 ||
+     humanMsg.indexOf("jaguar")!= -1  || humanMsg.indexOf("mazda")!= -1 ||
+     humanMsg.indexOf("lincoln")!= -1  || humanMsg.indexOf("bentley")!= -1 ||
+     humanMsg.indexOf("rolls royce")!= -1 || humanMsg.indexOf("porsche")!= -1 ||
+     humanMsg.indexOf("bugatti")!= -1 || humanMsg.indexOf("maserati")!= -1 ||
+     humanMsg.indexOf("koenigsegg")!= -1 || humanMsg.indexOf("McLaren")!= -1 ||
+     humanMsg.indexOf("pagani")!= -1){
         computerMsg = "You are fancy! By the way my birthday is next month. JUST SAYING!"
         // questionTrack = 'ice-cream'
       }else{
@@ -219,7 +224,7 @@
       }
     }//end coffeeAnalysis
     function birthdayAnalysis(){
-      if (humanMsg.indexOf("ok") || (humanMsg.indexOf("congratulations")!= -1){
+      if (humanMsg.indexOf("ok")!= -1  || humanMsg.indexOf("congratulations")!= -1){
         computerMsg = "And that's it? What about a birthday gift?"
         // questionTrack = "friend"
       }else if (humanMsg.indexOf('good for you')!= -1){
